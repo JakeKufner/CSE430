@@ -23,6 +23,21 @@ typedef struct _Node{
 
 SUITE(test_suite);
 
+//TODO: For Nathaniel to implement
+TEST
+test_DelQueue(){
+
+	PASS();
+}
+
+//TODO: For Nathaniel to implement
+TEST
+test_RotateQ(){
+
+	PASS();
+}
+
+
 TEST
 test_initQueue(){
 	Queue q;
@@ -101,19 +116,6 @@ test_Enqueue(){
 	PASS();
 }
 
-//TODO: For Nathaniel to implement
-TEST
-test_DelQueue(){
-
-	PASS();
-}
-
-//TODO: For Nathaniel to implement
-TEST
-test_RotateQ(){
-
-	PASS();
-}
 
 
 SUITE(test_suite)
