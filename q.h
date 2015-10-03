@@ -1,13 +1,15 @@
-#include <stdlib.h>
-
+#ifndef Q_H
+#define Q_H
 
 typedef enum __QUEUE_STATUS {Q_SUCCESS, Q_FAILURE} QUEUE_STATUS;
 
-typedef struct __Node Node;
-typedef struct __Node{
-	Node *next, *prev;
+
+struct __Node{
+	struct __Node *next, *prev;
 	int val;
-} Node;
+};
+
+typedef struct __Node Node;
 
 typedef struct __Queue{
 	Node *head, *tail;
@@ -15,43 +17,15 @@ typedef struct __Queue{
 } Queue;
 
 
-QUEUE_STATUS
-InitQueue(Queue *q){
-	q->count = 0;
-	return Q_SUCCESS;
-}
+QUEUE_STATUS InitQueue(Queue *q);
 
 
-Node *
-NewItem(){
-	return (Node *) malloc(sizeof(Node));
-}
+Node * NewItem(void);
 
 
-QUEUE_STATUS
-FreeItem(Node *item){
-	free(item);
-	return Q_SUCCESS;
-}
+QUEUE_STATUS FreeItem(Node *item);
 
 
-QUEUE_STATUS
-AddQueue(Queue *q, Node *n){
-	//first item
-	if(q->count == 0){
-		q->head = n;
-		q->tail = n;
-	}else{
-		q->tail->next = n;
-		n->prev = q->tail;
-		q->tail = n;
-	}
-	
-	//always increment count
-	q->count++;
-	//always point head.prev to tail and tail.next to head
-	q->head->prev = q->tail;
-	q->tail->next = q->head;
+QUEUE_STATUS AddQueue(Queue *q, Node *n);
 
-	return Q_SUCCESS;
-}
+#endif
