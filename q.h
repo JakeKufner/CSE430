@@ -28,4 +28,10 @@ QUEUE_STATUS FreeItem(Node *item);
 
 QUEUE_STATUS AddQueue(Queue *q, Node *n);
 
+
+Node * DelQueue(Queue *q);
+
+
+QUEUE_STATUS RotateQ(Queue *q);
+
 #endif
