@@ -1,3 +1,20 @@
+/*
+Project:
+CSE 430 Project 1
+
+Semester:
+Fall 2015
+
+Instructor:
+Partha Dasgupta
+
+Authors:
+Nathaniel Mendoza
+John Robertson
+
+
+*/
+
 #include "greatest.h"
 #include "q.h"
 #include <stdlib.h>
