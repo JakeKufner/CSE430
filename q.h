@@ -1,6 +1,6 @@
 /*
 Project:
-CSE 430 Project 1
+CSE 430 Project 2
 
 Semester:
 Fall 2015
@@ -17,6 +17,8 @@ John Robertson
 
 #ifndef Q_H
 #define Q_H
+#include "tcb.h"
+#include <stdlib.h>
 /*
 ////////////////////////
 START structure and type declarations
@@ -27,12 +29,8 @@ START structure and type declarations
 
 typedef enum __QUEUE_STATUS {Q_SUCCESS, Q_FAILURE} QUEUE_STATUS;
 
-struct __Node{
-	struct __Node *next, *prev;
-	int val;
-};
-
-typedef struct __Node Node;
+/* Use TCB_t as Node */
+typedef TCB_t Node;
 
 typedef struct __Queue{
 	Node *head, *tail;
