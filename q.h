@@ -128,4 +128,10 @@ END function definitions
 ////////////////////////
 */
 
+
+Node * DelQueue(Queue *q);
+
+
+QUEUE_STATUS RotateQ(Queue *q);
+
 #endif
