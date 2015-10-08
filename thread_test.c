@@ -32,10 +32,11 @@ int main(int argc, char ** argv){
 void t1(){
 	int local_int = 0;
 	while(1){
-		shared_int++;
-		local_int++;
 		yield();
 		printf("In t1 shared_int = %d, local_int = %d\n", shared_int, local_int);
+		shared_int++;
+		local_int++;
+		sleep(1);
 	}
 }
 
@@ -44,9 +45,11 @@ void t1(){
 void t2(){
 	int local_int = 0;
 	while(1){
+		printf("In t2 shared_int = %d, local_int = %d\n", shared_int, local_int);
+		sleep(1);
+		yield();
 		shared_int--;
 		local_int--;
-		printf("In t2 shared_int = %d, local_int = %d\n", shared_int, local_int);
-		yield();
+
 	}
 }
