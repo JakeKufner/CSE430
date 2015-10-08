@@ -26,9 +26,16 @@ void run(){
 
 
 void yield(){
-	ucontext_t current, next;
+	ucontext_t *current, *next;
+	/* save the current context in the context struct
+		of the currently executing thread
+		(ie. the thread at the front of the runQ when yield is called == the tail after rotating)
+		and activate the context of the next thread
+		(ie. the thread at the front of th runQ after rotating) */
+	current = &runQ->head->context;
 	RotateQ(runQ);
-	getcontext(&current);
-	next = runQ->head->context;
-	swapcontext(&current, &next);
+
+	/* next thread is now at head, because we rotated */
+	next = &runQ->head->context;
+	swapcontext(current, next);
 }
