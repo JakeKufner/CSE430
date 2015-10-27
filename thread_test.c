@@ -1,3 +1,19 @@
+/*
+Project:
+CSE 430 Project 2
+
+Semester:
+Fall 2015
+
+Instructor:
+Partha Dasgupta
+
+Authors:
+Nathaniel Mendoza
+John Robertson
+
+
+*/
 #include "threads.h"
 #include <stdio.h>
 #include <stdlib.h>
