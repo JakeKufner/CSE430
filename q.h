@@ -121,6 +121,14 @@ AddQueue(Queue *q, Node *n){
 	return Q_SUCCESS;
 }
 
+/*
+INPUT:
+Queue structure
+
+OUTPUT:
+The node at the front of the queue, after removing it from the queue.
+
+*/
 Node *
 DelQueue(Queue * q){
 
