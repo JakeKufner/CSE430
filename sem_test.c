@@ -9,6 +9,8 @@ void producer1(void);
 void consumer1(void);
 void producer2(void);
 void consumer2(void);
+void testMethod1(void);
+void testMethod2(void);
 /* int to be modified by both routines. */
 int shared_int;
 Semaphore *sem;
@@ -16,7 +18,7 @@ Semaphore *sem;
 
 /******Producer Consumer (Method 2)*********/
 Semaphore *empty, *full, *mutex;
-#define N 100
+#define N 5
 int buffer[N];
 int in, out;
 
@@ -26,10 +28,19 @@ int in, out;
 int main(int argc, char ** argv){
 	/* We need to init the global thread queue */
 	runQ = (Queue*) malloc(sizeof(Queue));
-		
 	InitQueue(runQ);
+
+	//run method to demonstrate functionality
+	testMethod2();
 	
-	/* Method 1 Setup
+
+	free(runQ);
+	return 0;
+}
+
+//These methods are to demostrate the functionality of the semaphores
+void
+testMethod1(){
 	sem = (Semaphore*) malloc(sizeof(Semaphore));
 
 	InitSem(sem, 1);
@@ -38,8 +49,14 @@ int main(int argc, char ** argv){
 	
 	start_thread(t1);
 	start_thread(t2);
-	*/
 
+	run();
+	free(sem);
+
+}
+
+void
+testMethod2(){
 	/* Method 2 - producer consumer setup */
 	srand(time(NULL));
 
@@ -62,12 +79,12 @@ int main(int argc, char ** argv){
 
 	/* start pulling threads from the runQ */	
 	run();
-	free(runQ);
-	free(sem);
-	return 0;
+
+	free(empty);
+	free(full);
+	free(mutex);
+
 }
-
-
 void
 t1(){
 	int local_int = 0;
